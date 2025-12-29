@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Dashboard</title>
+    <link rel="stylesheet" href="/css/video_order.css">
+</head>
+
+<body>
+<section class="submenu">
+    <div class="logo">@StoryTime</div>
+    <nav class="menu-box">
+        <ul>
+            <li class="menu-item active"><a href="#" id="overview-link">
+                <img src="/images/video_order/menU.png" alt="">
+                <span>Overview</span>
+                <img src="/images/video_order/jt_b.png" class="jt" alt="">
+            </a></li>
+            <li class="sum-menu sub-active" id="trips-menu">
+                <a href="#">
+                    <img src="/images/video_order/tips_settings.png" alt="">
+                    <span>Video</span>
+                </a>
+            </li>
+            <li class="sum-menu sub-active" id="trips-menu2">
+                <a href="/">
+                    <img src="/images/video_order/tips_settings.png" alt="">
+                    <span>Back</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="yj">
+        < </div>
+</section>
+
+<section class="main">
+    <header class="header">
+        <h2 class="title">Welcome back</h2>
+        <div class="user">
+            <img src="/images/video_order/th.png" alt="">
+            <img src="/images/video_order/jt.png" class="jt" alt="">
+        </div>
+    </header>
+    <div class="content">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>UserID</th>
+                <th>VideoID</th>
+                <th>CreationDate</th>
+                <th>Language</th>
+                <th>Subject</th>
+                <th>VideoURL</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="video : ${videos}">
+                <td th:text="${video.UserID}"></td>
+                <td th:text="${video.VideoID}"></td>
+                <td th:text="${video.CreationDate}"></td>
+                <td th:text="${video.Language}"></td>
+                <td th:text="${video.Subject}"></td>
+                <td><a th:href="${video.VideoURL}" target="_blank">View Video</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- 如果需要分页，可以在这里添加分页逻辑 -->
+    </div>
+</section>
+
+<script>
+    document.getElementById('overview-link').addEventListener('click', function () {
+        document.getElementById('trips-menu').classList.toggle('hidden');
+        document.getElementById('feedback-menu').classList.toggle('hidden');
+    });
+</script>
+</body>
+
+</html>

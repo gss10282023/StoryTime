@@ -1,0 +1,137 @@
+body {
+
+    min-height: 100vh;
+    background-color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+}
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    margin-top: 5vh;
+    background-size: cover;
+    background-color: white;
+}
+
+.login-background {
+    flex: 2;
+    max-width: 45%;
+    width: auto;
+    margin: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login-background img {
+    width: 60%;
+    height: 60%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.5s;
+}
+
+.login-background img:hover {
+    transform: scale(1.05);
+}
+
+.login-form {
+     background: #ffffff;
+      padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    background: #fff;
+    display: block;
+    margin: auto; /* Horizontal centering */
+    max-width: 500px; /* Fixed max width */
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.login-form:hover {
+    transform: scale(1.05);
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+       border-radius: 8px;
+    transition: border-color 0.3s;
+
+    
+}
+
+.login-form input:focus {
+    border-color: #007aff;
+}
+
+
+
+.login-form button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #000;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.login-form button:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+
+.login-form p {
+    text-align: center;
+    margin-top: 20px;
+     color: #007aff;
+
+}
+
+.account-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.account-button:hover {
+    background-color: black;
+    color: white;
+    transform: scale(1.05);
+}
+
+.arrow-icon {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.login-form li {
+    list-style-type: none;
+}
+
+

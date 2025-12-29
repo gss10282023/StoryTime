@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>About Us</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {},
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="/css/navBar.css" />
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="/css/footer.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<header>
+    <a href="/" class="logo">StoryTime</a>
+    <div class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/education" >Education</a></li>
+            <li><a href="/fairytale">Story</a></li>
+            <li><a href="/aboutUs">About Us</a></li>
+            </li>
+
+
+            <li th:if="${user == null}">
+                <a href="login" class="login-signup-button">Login/Sign up</a>
+            </li>
+
+            <li th:if="${user != null}">
+                <a href="/user/profile">Hello, <span th:text="${user.username}">User</span></a>
+                <ul>
+                    <li><a href="/user/profile">Change Profile</a></li>
+                    <li><a href="/user/logout">Log out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<section id="home" class="mt-32 pb-12 bg-white flex flex-col items-center space-y-12">
+    <!-- Profile 1 -->
+    <figure class="w-6/12 md:flex bg-white rounded-xl shadow-lg p-8 md:p-0">
+        <img class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover mx-auto"
+             src="/images/index/user1.jpg" alt="Alex Johnson">
+        <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+            <blockquote>
+                <p class="text-lg font-medium text-black">
+                    "I am passionate about building inclusive and modern web applications that improve user experiences."
+                </p>
+                <p class="text-lg font-medium text-black">
+                    "I am passionate about building inclusive and modern web applications that improve user experiences."
+                </p>
+                <p class="text-lg font-medium text-black">
+                    "I am passionate about building inclusive and modern web applications that improve user experiences."
+                </p>
+            </blockquote>
+            <figcaption class="font-medium">
+                <div class="text-sky-500">Alex Johnson</div>
+                <div class="text-gray-600">Frontend Developer, NeighborLink</div>
+            </figcaption>
+        </div>
+    </figure>
+    <figure class="w-6/12 md:flex bg-white rounded-xl shadow-lg p-8 md:p-0">
+        <img class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover mx-auto"
+             src="/images/index/user1.jpg" alt="Alex Johnson">
+        <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+            <blockquote>
+                <p class="text-lg font-medium text-black">
+                    "I am passionate about building inclusive and modern web applications that improve user experiences."
+                </p>
+                <p class="text-lg font-medium text-black">
+                    "I am passionate about building inclusive and modern web applications that improve user experiences."
+                </p>
+
+            </blockquote>
+            <figcaption class="font-medium">
+                <div class="text-sky-500">Alex Johnson</div>
+                <div class="text-gray-600">Frontend Developer, NeighborLink</div>
+            </figcaption>
+        </div>
+    </figure>
+    <figure class="w-6/12 md:flex bg-white rounded-xl shadow-lg p-8 md:p-0">
+        <img class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover mx-auto"
+             src="/images/index/user1.jpg" alt="Alex Johnson">
+        <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+            <blockquote>
+                <p class="text-lg font-medium text-black">
+                    "I am passionate about building inclusive and modern web applications that improve user experiences."
+                </p>
+                <p class="text-lg font-medium text-black">
+                    "I am passionate about building inclusive and modern web applications that improve user experiences."
+                </p>
+
+            </blockquote>
+            <figcaption class="font-medium">
+                <div class="text-sky-500">Alex Johnson</div>
+                <div class="text-gray-600">Frontend Developer, NeighborLink</div>
+            </figcaption>
+        </div>
+    </figure>
+    <figure class="w-6/12 md:flex bg-white rounded-xl shadow-lg p-8 md:p-0">
+        <img class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover mx-auto"
+             src="/images/index/user1.jpg" alt="Alex Johnson">
+        <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+            <blockquote>
+                <p class="text-lg font-medium text-black">
+                    "I am passionate about building inclusive and modern web applications that improve user experiences."
+                </p>
+                <p class="text-lg font-medium text-black">
+                    "I am passionate about building inclusive and modern web applications that improve user experiences."
+                </p>
+            </blockquote>
+            <figcaption class="font-medium">
+                <div class="text-sky-500">Alex Johnson</div>
+                <div class="text-gray-600">Frontend Developer, NeighborLink</div>
+            </figcaption>
+        </div>
+    </figure>
+</section>
+
+
+
+
+
+
+<!-- Footer -->
+<section>
+    <div class="footer">
+        <ul class="footer-links">
+            <li><a href="log_out/sitemap.html">Site Map</a></li>
+            <li><a href="log_out/privacy.html">Privacy Policy</a></li>
+            <li><a href="log_out/terms.html">Terms of Use</a></li>
+            <li><a href="log_out/privacy.html#contact-us">Contact Us</a></li>
+        </ul>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<script>
+    window.addEventListener("scroll", function() {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    });
+</script>
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    AOS.init();
+</script>
+
+
+</body>
+
+</html>
+
+
+
+</body>
+
+</html>

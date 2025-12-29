@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>视频生成测试</title>
+  <!-- 引入 SockJS 和 Stomp.js -->
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+</head>
+<body>
+<h1>视频生成测试</h1>
+<input type="text" id="prompt" placeholder="输入视频描述">
+<button onclick="generateVideo()">生成视频</button>
+<p id="taskId"></p>
+<p id="status"></p>
+<div id="videoContainer"></div>
+
+<script>
+  var stompClient = null;
+
+  function connect(taskId) {
+    var socket = new SockJS('/ws');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+      console.log('Connected: ' + frame);
+      stompClient.subscribe('/topic/status/' + taskId, function (message) {
+        var data = JSON.parse(message.body);
+        updateStatus(data);
+      });
+    });
+  }
+
+  function generateVideo() {
+    const prompt = document.getElementById('prompt').value;
+    fetch('/api/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: 'prompt=' + encodeURIComponent(prompt)
+    })
+            .then(response => response.text())
+            .then(taskId => {
+              document.getElementById('taskId').innerText = '任务 ID: ' + taskId;
+              connect(taskId); // 连接 WebSocket 并订阅消息
+            });
+  }
+
+  function updateStatus(data) {
+    const status = data['task_status'];
+    document.getElementById('status').innerText = '任务状态: ' + status;
+    if (status === 'success') {
+      const result = data['data'];
+      const videoContainer = document.getElementById('videoContainer');
+      videoContainer.innerHTML = '';
+      const videos = result['output'];
+      videos.forEach(url => {
+        const videoElement = document.createElement('video');
+        videoElement.src = url;
+        videoElement.controls = true;
+        videoContainer.appendChild(videoElement);
+      });
+    } else if (status === 'failed') {
+      document.getElementById('status').innerText = '视频生成失败';
+    }
+  }
+</script>
+</body>
+</html>

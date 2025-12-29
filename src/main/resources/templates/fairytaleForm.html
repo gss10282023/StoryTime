@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Story Generation</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/navBar3.css" />
+    <link rel="stylesheet" type="text/css" href="/css/storyGenerate.css" />
+    <link rel="stylesheet" type="text/css" href="/css/footer2.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- 引入 SockJS 和 Stomp.js -->
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+
+    <script>
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+    </script>
+</head>
+
+<body>
+<!-- Navigation Bar -->
+<header>
+    <a href="/" class="logo">StoryTime</a>
+    <div class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/education">Education</a></li>
+            <li><a href="/fairytale">Story</a></li>
+            <li><a href="/aboutUs">About Us</a></li>
+
+        </ul>
+    </div>
+</header>
+
+<!-- Main Content -->
+<section class="background" id="home">
+    <video src="/video/background2.mp4" autoplay muted loop preload="auto" class="background-video"></video>
+    <div class="overlay">
+        <h2 class="main-title">Create Your Fairy Tale</h2>
+        <p class="main-paragraph">Choose Your Adventure, and Let's Embark on a Journey.</p>
+
+        <form class="adventure-form" th:action="@{/fairytale}" th:object="${fairytaleRequest}" method="post" onsubmit="showLoading()">
+            <label class="main-label">Age Group:</label>
+            <select th:field="*{ageGroup}">
+                <option value="0-2">0-2</option>
+                <option value="3-5">3-5</option>
+                <option value="5-8">5-8</option>
+            </select>
+
+            <label class="main-label">Gender:</label>
+            <select th:field="*{gender}">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+
+            <label class="main-label">Story Characteristics:</label>
+            <select th:field="*{characteristic}">
+                <option value="Brave">Brave</option>
+                <option value="Kind">Kind</option>
+                <option value="Intelligent">Intelligent</option>
+                <option value="Magical">Magical</option>
+                <option value="Strong in combat">Strong in combat</option>
+                <option value="Healing abilities">Healing abilities</option>
+                <option value="Beautiful">Beautiful</option>
+                <option value="Strong">Strong</option>
+                <option value="Noble">Noble</option>
+                <option value="Royal family">Royal family</option>
+                <option value="Rich">Rich</option>
+                <option value="Magical world">Magical world</option>
+            </select>
+
+            <div class="generate-video-container">
+
+            </div>
+
+            <!-- 修改按钮为提交表单 -->
+            <button type="submit" onclick="hideContent()">Start Your Adventure</button>
+        </form>
+    </div>
+
+    <!-- 加载动画 -->
+    <div id="loading" style="display:none;">Loading...</div>
+
+    <!-- 内容容器 -->
+    <div class="content2" style="display: none;">
+        <img src="/images/delete.png" class="delete-button" onclick="toggleOverlay()" alt="Delete" />
+        <img src="/images/left.png" class="left-button" alt="Left Arrow" onclick="prevBox()" />
+        <img src="/images/right.png" class="right-button" alt="Right Arrow" onclick="nextBox()" />
+
+        <!-- Box 容器 -->
+        <div class="box">
+            <!-- 第一个 Box 的内容（只包含视频） -->
+            <div class="media-container">
+                <!-- 视频元素，将在接收到数据后更新 src -->
+                <video controls class="video-component" autoplay muted loop playsinline>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <!-- 从第二个 Box 开始，包含图片、音频和文字 -->
+        <div class="box">
+            <!-- 第二个 Box 的内容 -->
+            <div class="image-container">
+                <img src="" class="image-component" alt="Your Image" />
+            </div>
+            <div class="media-container">
+                <audio controls class="audio-component">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="text-container">
+                <p></p>
+            </div>
+        </div>
+
+        <!-- 第三个 Box -->
+        <div class="box">
+            <!-- 第三个 Box 的内容 -->
+            <div class="image-container">
+                <img src="" class="image-component" alt="Your Image" />
+            </div>
+            <div class="media-container">
+                <audio controls class="audio-component">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="text-container">
+                <p></p>
+            </div>
+        </div>
+
+        <!-- 第四个 Box -->
+        <div class="box">
+            <!-- 第四个 Box 的内容 -->
+            <div class="image-container">
+                <img src="" class="image-component" alt="Your Image" />
+            </div>
+            <div class="media-container">
+                <audio controls class="audio-component">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="text-container">
+                <p></p>
+            </div>
+        </div>
+
+        <!-- 第五个 Box -->
+        <div class="box">
+            <!-- 第五个 Box 的内容 -->
+            <div class="image-container">
+                <img src="" class="image-component" alt="Your Image" />
+            </div>
+            <div class="media-container">
+                <audio controls class="audio-component">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="text-container">
+                <p></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<section>
+    <div class="footer">
+        <ul class="footer-links">
+            <li><a href="log_out/sitemap.html">Site Map</a></li>
+            <li><a href="log_out/privacy.html">Privacy Policy</a></li>
+            <li><a href="log_out/terms.html">Terms of Use</a></li>
+            <li><a href="log_out/privacy.html#contact-us">Contact Us</a></li>
+        </ul>
+    </div>
+</section>
+
+<!-- JavaScript 脚本 -->
+<script>
+    // 当前显示的 Box 索引
+    let currentBoxIndex = 0;
+    const boxes = document.querySelectorAll('.content2 .box');
+    const leftButton = document.querySelector('.left-button');
+    const rightButton = document.querySelector('.right-button');
+
+    function updateBoxes() {
+        boxes.forEach((box, index) => {
+            if (index === currentBoxIndex) {
+                box.classList.add('active');
+            } else {
+                box.classList.remove('active');
+            }
+        });
+        // 当在第一个或最后一个 Box 时隐藏相应的按钮
+        leftButton.style.visibility = currentBoxIndex === 0 ? 'hidden' : 'visible';
+        rightButton.style.visibility = currentBoxIndex === boxes.length - 1 ? 'hidden' : 'visible';
+    }
+
+    function nextBox() {
+        if (currentBoxIndex < boxes.length - 1) {
+            currentBoxIndex++;
+            updateBoxes();
+        }
+    }
+
+    function prevBox() {
+        if (currentBoxIndex > 0) {
+            currentBoxIndex--;
+            updateBoxes();
+        }
+    }
+
+    // 初始化页面
+    updateBoxes();
+</script>
+
+<!-- 其他脚本 -->
+<script>
+    // 处理页面滚动的脚本
+    window.addEventListener("scroll", function() {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    });
+
+    // 隐藏内容并显示内容2的函数
+    function hideContent() {
+        var contentDiv = document.querySelector('.overlay');
+        var contentDiv2 = document.querySelector('.content2');
+        var backGround = document.querySelector('.background');
+
+        // 隐藏.overlay
+        contentDiv.style.opacity = '0';
+        contentDiv.style.display = 'none';
+
+        // 显示.content2
+        contentDiv2.style.display = 'flex';
+        setTimeout(() => {
+            contentDiv2.style.opacity = '1';
+        }, 50);
+
+        // 调整背景和布局
+        backGround.style.alignItems = 'flex-end';
+        backGround.style.justifyContent = 'center';
+        contentDiv2.style.marginBottom = '3vh';
+        contentDiv2.style.justifyContent = 'flex-start';
+        contentDiv2.style.padding = '3vh';
+    }
+
+    // 切换叠加层的函数
+    function toggleOverlay() {
+        var contentDiv = document.querySelector('.content2');
+        var overlayDiv = document.querySelector('.overlay');
+        var background = document.querySelector('.background');
+
+        // 隐藏content2，显示overlay
+        contentDiv.style.opacity = '0';
+        contentDiv.style.display = 'none';
+
+        overlayDiv.style.display = 'flex';
+        overlayDiv.style.flexDirection = 'column';
+        overlayDiv.style.justifyContent = 'center';
+
+        setTimeout(() => {
+            overlayDiv.style.opacity = '1';
+        }, 50);
+
+        // 恢复背景布局
+        background.style.alignItems = 'center';
+        background.style.justifyContent = 'center';
+    }
+</script>
+
+<!-- 获取 sessionId -->
+<script th:inline="javascript">
+    var sessionId = /*[[${sessionId}]]*/ '';
+</script>
+
+<!-- WebSocket 处理和内容更新脚本 -->
+<script>
+    if (sessionId !== '') {
+        // 调用 hideContent() 函数，显示 content2
+        hideContent();
+
+        var socket = new SockJS('/ws');
+        var stompClient = Stomp.over(socket);
+
+        // 用于存储接收到的场景数据
+        var sceneDataMap = {};
+
+        // 连接到 WebSocket
+        stompClient.connect({}, function(frame) {
+            console.log('Connected: ' + frame);
+
+            // 订阅进度更新
+            stompClient.subscribe('/topic/progress/' + sessionId, function(message) {
+                var progress = message.body;
+                console.log('Progress:', progress);
+                // 可以在页面上显示进度信息
+                // 例如，将进度信息显示在一个元素中
+                // document.getElementById('loading').innerHTML += '<p>' + progress + '</p>';
+            });
+
+            // 订阅场景数据
+            stompClient.subscribe('/topic/scene/' + sessionId, function(message) {
+                var sceneData = JSON.parse(message.body);
+                var sceneIndex = parseInt(sceneData.sceneIndex);
+
+                // 存储场景数据
+                sceneDataMap[sceneIndex] = sceneData;
+
+                // 更新对应的 Box 内容
+                updateBoxContent(sceneIndex, sceneData);
+            });
+        });
+
+        function updateBoxContent(sceneIndex, sceneData) {
+            var boxes = document.querySelectorAll('.content2 .box');
+
+            if (sceneIndex === 0) {
+                // 第一个场景，更新第一个 Box 的视频
+                var videoBox = boxes[0];
+                if (sceneData.videoUrl && sceneData.videoUrl !== '') {
+                    var video = videoBox.querySelector('.media-container video');
+                    if (video) {
+                        video.src = sceneData.videoUrl;
+                    }
+                }
+
+                // 同时更新第二个 Box 的图片、音频和文字
+                if (boxes.length > 1) {
+                    var secondBox = boxes[1];
+
+                    updateImageAudioText(secondBox, sceneData);
+                }
+            } else {
+                // 从第二个场景开始，更新第 (sceneIndex + 1) 个 Box
+                var targetBoxIndex = sceneIndex + 1;  // 索引偏移一位
+
+                if (targetBoxIndex < boxes.length) {
+                    var targetBox = boxes[targetBoxIndex];
+
+                    updateImageAudioText(targetBox, sceneData);
+                }
+            }
+        }
+
+// 辅助函数：更新 Box 的图片、音频和文字
+        function updateImageAudioText(box, sceneData) {
+            // 更新图片
+            var image = box.querySelector('.image-container img');
+            if (image && sceneData.image) {
+                image.src = 'data:image/png;base64,' + sceneData.image;
+            }
+
+            // 更新音频
+            var audio = box.querySelector('.media-container audio');
+            if (audio && sceneData.audio) {
+                audio.src = 'data:audio/wav;base64,' + sceneData.audio;
+            }
+
+            // 更新文字
+            var textP = box.querySelector('.text-container p');
+            if (textP && sceneData.text) {
+                textP.textContent = sceneData.text;
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>StoryTime</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/navBar.css" />
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="/css/footer.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<header>
+    <a href="/" class="logo">StoryTime</a>
+    <div class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/education" >Education</a></li>
+            <li><a href="/fairytale">Story</a></li>
+            <li><a href="/aboutUs">About Us</a></li>
+            </li>
+
+
+            <li th:if="${user == null}">
+                <a href="login" class="login-signup-button">Login/Sign up</a>
+            </li>
+
+            <li th:if="${user != null}">
+                <a href="/user/profile">Hello, <span th:text="${user.username}">User</span></a>
+                <ul>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/user/profile">Change Profile</a></li>
+                    <li><a href="/user/logout">Log out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+
+
+
+
+
+<!-- Main Content -->
+<section class="background" id="home" data-aos="fade-right"
+         data-aos-delay="500"
+         data-aos-duration="1200">
+    <div class="image-container">
+         <video src="/video/indexVideo1.mp4" autoplay muted loop preload="auto" ></video>
+    </div>
+
+
+
+    <div class="content" >
+        <h1>Story Generator</h1>
+        <p>Story Generator allows users easily create personalized educational story videos by selecting characters, themes, and languages, crafting content tailored to their needs.</p>
+        <button class="backgroundButton" onclick="window.location.href='/fairytale'" ><span>Try now</span></button>
+        </form>
+    </div>
+</section>
+
+
+<section class="introduce1" id="introduce1" data-aos="fade-up-left"
+         data-aos-anchor-placement="center-bottom"
+         data-aos-delay="50"
+         data-aos-duration="1000">
+    <div class="showingVideo">
+        <video src="/video/indexVideo2.mp4" autoplay muted loop preload="auto"  class="backgroundPicture"></video>
+    </div>
+    <div class="contentRight" >
+        <h1>Educational Video Generator </h1>
+
+        <p>Educational Video Generator lets users create custom educational videos with personalized subjects, languages, and age groups, featuring interactive lessons and fairy tales.</p>
+
+
+    </div>
+</section>
+
+
+<section class="introduce2" id="introduce2" data-aos="fade-up-right"
+         data-aos-anchor-placement="center-bottom"
+         data-aos-delay="50"
+         data-aos-duration="1000">
+    <div class="showingPicture2">
+        <video src="/video/indexVideo3.mp4" autoplay muted loop preload="auto"  class="backgroundPicture2"></video>
+    </div>
+    <div class="contentLeft">
+        <h1>Fairy Tale Library  </h1>
+        <p>Fairy Tale Library allows users to browse, view, and listen to a collection of fairy tales with text, images, and audio readings, bringing stories to life in an engaging way.</p>
+
+
+    </div>
+
+
+</section>
+
+
+
+<section class="features" id="features" data-aos="zoom-in"  data-aos-delay="50"
+         data-aos-duration="1200">
+    <div class="feature-row">
+        <div class="feature-item">
+            <img src="images/icon/1.png" alt="User Account Management Icon" class="feature-icon">
+            <div class="feature-text">
+                <h3>User Account Management</h3>
+                <p>Users can register, log in, and manage their accounts effectively.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <img src="images/icon/2.png" alt="Ride Posting Icon" class="feature-icon">
+            <div class="feature-text">
+                <h3>Generate video function</h3>
+                <p>Users can generate personalized teaching videos.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <img src="images/icon/3.png" alt="Cost Contribution Suggestion Icon" class="feature-icon">
+            <div class="feature-text">
+                <h3>Subject-specific video generation</h3>
+                <p>Videos are tailored to the selected subject, such as math or English.</p>
+            </div>
+        </div>
+    </div>
+    <div class="feature-row">
+        <div class="feature-item">
+            <img src="images/icon/4.png" alt="Trip Search and Matching Icon" class="feature-icon">
+            <div class="feature-text">
+                <h3>Choose the applicable age</h3>
+                <p>Users specify the target age group for age-appropriate content.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <img src="images/icon/5.png" alt="Communication Feature Icon" class="feature-icon">
+            <div class="feature-text">
+                <h3>Math problem practice and feedback</h3>
+                <p>Math videos include practice problems with feedback and explanations.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <img src="images/icon/6.png" alt="Confirmation and Estimation Icon" class="feature-icon">
+            <div class="feature-text">
+                <h3>Fairy tale function</h3>
+                <p>Users can access and browse fairy tales with text and images.</p>
+            </div>
+        </div>
+    </div>
+    <div class="feature-row">
+        <div class="feature-item">
+            <img src="images/icon/7.png" alt="Rating System Icon" class="feature-icon">
+            <div class="feature-text">
+                <h3>Picture automatic playback</h3>
+                <p>Fairy tale images can autoplay for a dynamic visual experience.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <img src="images/icon/8.png" alt="History and Management Icon" class="feature-icon">
+            <div class="feature-text">
+                <h3>Story reading function</h3>
+                <p>Users can listen to fairy tales through the reading feature.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <img src="images/icon/9.png" alt="Environmental Impact Report Icon" class="feature-icon">
+            <div class="feature-text">
+                <h3>Choose the protagonist role</h3>
+                <p>Users can select a protagonist for personalization in the videos.</p>
+            </div>
+        </div>
+    </div>
+    <div class="feature-row2">
+        <div class="feature-item">
+            <img src="images/icon/10.png" alt="Enhanced Trip Search and Matching Icon" class="feature-icon" >
+            <div class="feature-text">
+                <h3>Review video content</h3>
+                <p>Users can review and revisit previously generated videos.</p>
+            </div>
+        </div>
+        <div class="feature-item">
+            <img src="images/icon/11.png" alt="Dynamic Fuel Contribution Adjustment Icon" class="feature-icon">
+            <div class="feature-text">
+                <h3>Record video generation</h3>
+                <p>The system automatically saves generated videos for future access.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="testimonials" id="testimonials" data-aos="zoom-out"  data-aos-delay="50"
+         data-aos-duration="900">
+    <h2>What our users say</h2>
+    <div class="testimonial-grid">
+        <div class="testimonial-item">
+            <img src="images/index/user1.jpg" alt="Avatar">
+            <p class="username">Taylor Smith</p>
+            <p>"The personalized videos make learning exciting and fun for my kids!"</p>
+        </div>
+        <div class="testimonial-item">
+            <img src="images/index/user5.jpg" alt="Avatar">
+            <p class="username">Jordan Lee</p>
+            <p>"A perfect combination of education and entertainment—my child loves it!"</p>
+        </div>
+        <div class="testimonial-item">
+            <img src="images/index/user2.jpg" alt="Avatar">
+            <p class="username">Xin Su</p>
+            <p>"The age-appropriate content keeps my child engaged and learning with ease."</p>
+        </div>
+
+        <div class="testimonial-item">
+            <img src="images/index/user6.jpg" alt="Avatar">
+            <p class="username">Samira R</p>
+            <p>"Selecting protagonists makes every video feel unique and special."</p>
+        </div>
+        <div class="testimonial-item">
+            <img src="images/index/user3.jpg" alt="Avatar">
+            <p class="username">Emma Smith</p>
+            <p>"Smooth navigation and engaging content—this platform is amazing!"</p>
+        </div>
+        <div class="testimonial-item">
+            <img src="images/index/user4.jpg" alt="Avatar">
+            <p class="username">Kathe Fei</p>
+            <p>"The fairy tale section with dynamic pictures is simply magical!"</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<section>
+    <!-- Footer using Bootstrap and Custom CSS -->
+    <footer class="footer bg-white text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <ul class="footer-links list-inline">
+                <li class="list-inline-item"><a href="sitemap.html" class="text-muted">Site Map</a></li>
+                <li class="list-inline-item"><a href="privacy.html" class="text-muted">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="terms.html" class="text-muted">Terms of Use</a></li>
+                <li class="list-inline-item"><a href="privacy.html#contact-us" class="text-muted">Contact Us</a></li>
+            </ul>
+        </div>
+
+    </footer>
+</section>
+
+<script>
+    window.addEventListener("scroll", function() {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    });
+</script>
+
+<script>
+    function checkLogin() {
+        // Replace this with actual login check logic
+        var isLoggedIn = false; // Example: check if the user is logged in
+
+        if (!isLoggedIn) {
+            showAlert('Please Log in');
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+
+    function showAlert(message) {
+        alert(message);
+    }
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    AOS.init();
+</script>
+
+
+</body>
+
+</html>
+
+
+
+</body>
+
+</html>

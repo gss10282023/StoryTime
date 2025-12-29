@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - StoryTime</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/navBar3.css"/>
+    <link rel="stylesheet" href="/css/loginSignUp.css">
+    <link rel="stylesheet" type="text/css" href="/css/footer.css"/>
+
+
+    <style>
+        /* 确保视频全屏显示并覆盖整个页面 */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* 防止出现滚动条 */
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 保持视频比例并覆盖整个视口 */
+            z-index: -1; /* 确保视频在所有内容的下方 */
+        }
+
+        /* 可选：为内容添加透明背景 */
+        .content {
+            position: relative;
+            z-index: 1; /* 让内容位于视频上方 */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+        }
+    </style>
+
+
+</head>
+<body>
+
+<video autoplay muted loop>
+    <source src="/video/indexVideo3.mp4" type="video/mp4">
+
+</video>
+
+
+
+<!-- Navigation Bar -->
+<header>
+    <a href="/" class="logo">StoryTime</a>
+    <div class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/education" >Education</a></li>
+            <li><a href="/fairytale">Story</a></li>
+            <li><a href="/aboutUs">About Us</a></li>
+            </li>
+
+
+            <li><a href="/login" class="login-signup-button">Login/Sign up</a>
+                <ul>
+                    <li><a href="login">Login in</a></li>
+                    <li><a href="login">Sign Up</a>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<section class="features" id="features">
+
+    <section class="container" id="container">
+
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal details to use all of site features</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-container sign-up">
+            <form action="/user/register" method="post">
+                <h1>Create Account</h1>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+                <div th:if="${message}">
+                    <p style="color: green;" th:text="${message}"></p>
+                </div>
+                <div th:if="${error}">
+                    <p style="color: red;" th:text="${error}"></p>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="form-container sign-in">
+            <form action="/user/login" method="post">
+                <h1>Sign In</h1>
+                <input type="text" name="username" placeholder="Username or Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <a href="/user/resetPassword">Forgot your password?</a>
+                <button type="submit">Sign In</button>
+
+                <div th:if="${message}">
+                    <p style="color: green;" th:text="${message}">Password reset successful</p>
+                </div>
+                <div th:if="${error}">
+                    <p style="color: red;" th:text="${error}">Invalid username or email</p>
+                </div>
+            </form>
+        </div>
+
+    </section>
+</section>
+
+
+
+<script src="/js/loginSignup.js"></script>
+<script>
+    window.addEventListener("scroll", function() {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    });
+</script>
+
+
+</body>
+</html>

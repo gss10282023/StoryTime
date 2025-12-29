@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/navBar.css"/>
+    <link rel="stylesheet" href="/css/changeEmail.css">
+    <link rel="stylesheet" type="text/css" href="/css/footer.css"/>
+
+
+
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<header>
+    <a href="" class="logo">StoryTime</a>
+    <div class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#" >Education</a></li>
+            <li><a href="">Story</a></li>
+            <li><a href="">About Us</a></li>
+            </li>
+
+
+            <li th:if="${user == null}">
+                <a href="login" class="login-signup-button">Login/Sign up</a>
+            </li>
+
+            <li th:if="${user != null}">
+                <a href="/user/profile">Hello, <span th:text="${user.username}">User</span></a>
+                <ul>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/user/profile">Change Profile</a></li>
+                    <li><a href="/user/logout">Log out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+
+
+
+<section class="features" id="features">
+
+    <section class="container" id="container">
+
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Hello, <h1 th:text="${user.username}">username</h1> </h1>
+                    <p>Try to change your email</p>
+                    <button class="hidden" id="login">Change username</button>
+                </div>
+
+
+                >
+
+                <div class="toggle-panel toggle-right">
+                    <h1>Hello, <h1 th:text="${user.username}">username</h1> </h1>
+                    <p>Try to change your username</p>
+                    <button class="hidden" id="register">Change email</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-container sign-up">
+
+
+
+
+
+            <form action="/user/changeEmail" method="post">
+                <h1>Change Email</h1>
+
+                <input type="email" id="newEmail" name="newEmail" placeholder="New Email" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <button type="submit" value="Change Email">Submit</button>
+                <div th:if="${message}">
+                    <p style="color: green;" th:text="${message}"></p>
+                </div>
+                <div th:if="${error}">
+                    <p style="color: red;" th:text="${error}"></p>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+
+        <div class="form-container sign-in">
+            <form action="/user/changeUsername" method="post">
+                <h1>Change Username</h1>
+                <input type="text" id="newUsername" name="newUsername" placeholder="New Username" required>
+                <input type="password"  name="password" placeholder="Password" required>
+
+                <button type="submit" value="Change Username">Submit</button>
+
+                <div th:if="${message}">
+                    <p style="color: green;" th:text="${message}">Username changed successfully</p>
+                </div>
+                <div th:if="${error}">
+                    <p style="color: red;" th:text="${error}">Failed to change username</p>
+                </div>
+            </form>
+
+        </div>
+
+    </section>
+</section>
+
+
+
+<!-- Footer -->
+<section>
+    <div class="footer">
+        <ul class="footer-links">
+            <li><a href="log_out/sitemap.html">Site Map</a></li>
+            <li><a href="log_out/privacy.html">Privacy Policy</a></li>
+            <li><a href="log_out/terms.html">Terms of Use</a></li>
+            <li><a href="log_out/privacy.html#contact-us">Contact Us</a></li>
+        </ul>
+    </div>
+</section>
+<script src="/js/loginSignup.js"></script>
+<script>
+    window.addEventListener("scroll", function() {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    });
+</script>
+
+
+</body>
+</html>

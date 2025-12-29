@@ -1,0 +1,345 @@
+body {
+
+    min-height: 200vh;
+    background-color: white;
+
+}
+
+
+
+
+.background{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 95vh;
+    width: 100%;
+    background-color: white;
+    justify-content:flex-start;
+    align-items: center;
+    z-index: 0;
+    font-family: "Apple Braille";
+
+
+}
+
+
+.image-container {
+    width: 40%; /* 确保宽度与 .content 一样 */
+    height: 55vh; /* 确保高度与 .content 一样 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white; /* 可选：与 .content 相同的背景色 */
+    overflow: hidden; /* 确保图像不超出容器 */
+    margin-top: 10%;
+    margin-left: 5%;
+    border-radius: 20px;
+}
+
+.image-container img {
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 使图像适应容器 */
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30vh 0  20vh 0;
+    width: 50%;
+    height: 75vh;
+    background-color: white;
+    transition-delay: 1s;
+    transition-duration: 2s;
+    transition-timing-function: ease-in-out;
+    margin-left: auto;
+
+
+
+}
+.content h1{
+    font-size: 2.8vw;
+    color: black;
+    background-color: white;
+
+
+
+
+
+
+}
+.content p{
+    color: black;
+    font-size: 1vw;
+    background-color: white;
+    margin-top: 3vh;
+
+
+}
+
+
+.backgroundButton {
+    width: 40%;
+    margin-top: 2.5vh;
+    padding: 1.5vh;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-radius: 1.8vh;
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-size: 1vw;
+}
+
+.backgroundButton span {
+    cursor: pointer;
+    position: relative;
+    transition: 0.5s;
+}
+
+.backgroundButton span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -2vw;
+    transition: 0.5s;
+}
+
+.backgroundButton:hover span {
+    padding-right: 1.5vw;
+}
+
+.backgroundButton:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+#introduce1{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    min-height: 80vh;
+    width: 100%;
+    background-color: white;
+    justify-content:flex-start;
+    align-items: center;
+    z-index: 0;
+    font-family: "Apple Braille";
+}
+
+.showingVideo{
+    width: 29vw;
+    max-height: 72vh;
+    text-align: center;
+    background-color: white;
+    margin-right: 15vw;
+    padding: 0;
+    border-radius: 20px;
+
+}
+.backgroundPicture{
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+}
+.contentRight{
+    margin-right: 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 30vh;
+    width: 30%;
+    background-color: white;
+    word-wrap: break-word; /* 确保长单词能够换行 */
+    word-break: normal; /* 或者你可以使用 word-break: break-all; 允许在任意字母后换行 */
+    white-space: normal; /* 确保文本自动换行 */
+}
+.contentRight h1{
+    font-size: 1.8vw;
+    margin-bottom: 0.6vh;
+
+}
+.contentRight p{
+    font-size: 0.8vw;
+    margin-right: 0vw;
+
+    word-wrap: break-word; /* 确保长单词能够换行 */
+    word-break: normal; /* 或者你可以使用 word-break: break-all; 允许在任意字母后换行 */
+    white-space: normal; /* 确保文本自动换行 */
+}
+
+
+#introduce2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 80vh;
+    width: 100%;
+    background-color: white;
+    justify-content:flex-start;
+    align-items: center;
+    z-index: 0;
+    font-family: "Apple Braille";
+}
+.showingPicture2{
+    width: 29vw;
+    max-height: 72vh;
+    text-align: center;
+    background-color: white;
+    margin-left: 13vw;
+    padding: 0;
+
+
+
+}
+.backgroundPicture2{
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+}
+.contentLeft{
+    margin-left: 13vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+    max-height: 30vh;
+    background-color: white;
+    word-wrap: break-word; /* 确保长单词能够换行 */
+    word-break: normal; /* 或者你可以使用 word-break: break-all; 允许在任意字母后换行 */
+    white-space: normal; /* 确保文本自动换行 */
+
+
+
+}
+.contentLeft h1{
+    font-size: 1.8vw;
+    margin-bottom: 0.6vh;
+
+
+}
+.contentLeft p{
+    font-size: 0.8vw;
+
+
+
+    margin-right: 0vw;
+
+
+}
+
+
+
+.features {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 10%;
+    background-color: white;
+}
+
+.feature-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    flex: 0 0 30%;
+    text-align: left;
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.feature-text {
+    flex: 1;
+}
+
+.feature-text h3 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.feature-text p {
+    font-size: 1em;
+    color: gray;
+}
+
+
+
+.feature-row2 {
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.testimonials {
+    text-align: center;
+    padding: 50px 10%;
+    background-color: #f7f7f7;
+}
+
+.testimonials h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.testimonials p {
+    font-size: 1em;
+    color: gray;
+    margin-bottom: 40px;
+}
+
+.testimonial-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.testimonial-item {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.testimonial-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.testimonial-item .username {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.testimonial-item p {
+    margin: 5px 0;
+}

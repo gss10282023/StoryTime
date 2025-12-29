@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change Username</title>
+</head>
+<body>
+<h2>Change Username</h2>
+<form action="/user/changeUsername" method="post">
+    <div>
+        <label for="newUsername">New Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required>
+    </div>
+    <div>
+        <label for="password">Current Password:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+        <input type="submit" value="Change Username">
+    </div>
+    <div th:if="${message}">
+        <p style="color: green;" th:text="${message}">Username changed successfully</p>
+    </div>
+    <div th:if="${error}">
+        <p style="color: red;" th:text="${error}">Failed to change username</p>
+    </div>
+</form>
+<a href="/user/profile">Back to Profile</a>
+</body>
+</html>

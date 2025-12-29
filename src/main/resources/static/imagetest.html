@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stable Diffusion 3 Test Page</title>
+</head>
+<body>
+<h1>Stable Diffusion 3 Image Generation</h1>
+<form id="generationForm">
+    <label for="prompt">Prompt:</label>
+    <input type="text" id="prompt" name="prompt" required><br><br>
+
+    <label for="mode">Mode:</label>
+    <select id="mode" name="mode">
+        <option value="text-to-image" selected>Text to Image</option>
+        <option value="image-to-image">Image to Image</option>
+    </select><br><br>
+
+    <div id="imageInput" style="display: none;">
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" accept="image/*"><br><br>
+
+        <label for="strength">Strength (0~1):</label>
+        <input type="number" id="strength" name="strength" min="0" max="1" step="0.1"><br><br>
+    </div>
+
+    <label for="model">Model:</label>
+    <select id="model" name="model">
+        <option value="sd3-large" selected>sd3-large</option>
+        <option value="sd3-medium">sd3-medium</option>
+        <option value="sd3-large-turbo">sd3-large-turbo</option>
+    </select><br><br>
+
+    <label for="output_format">Output Format:</label>
+    <select id="output_format" name="output_format">
+        <option value="png">PNG</option>
+        <option value="jpeg" selected>JPEG</option>
+    </select><br><br>
+
+    <label for="aspect_ratio">Aspect Ratio:</label>
+    <select id="aspect_ratio" name="aspect_ratio">
+        <option value="1:1" selected>1:1</option>
+        <option value="16:9">16:9</option>
+        <option value="9:16">9:16</option>
+        <!-- Add other options as needed -->
+    </select><br><br>
+
+    <label for="seed">Seed (0 for random):</label>
+    <input type="number" id="seed" name="seed" min="0"><br><br>
+
+    <label for="negative_prompt">Negative Prompt:</label>
+    <input type="text" id="negative_prompt" name="negative_prompt"><br><br>
+
+    <!-- 在表单中添加一个复选框 -->
+    <label for="convertToVideo">Convert to Video:</label>
+    <input type="checkbox" id="convertToVideo" name="convertToVideo"><br><br>
+
+    <button type="submit">Generate Image</button>
+</form>
+
+<p id="status"></p>
+<img id="result" src="" alt="Generated Image" style="display:none; max-width: 500px;">
+
+<!-- Include SockJS and Stomp.js -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+<script src="/js/webImageGeneration.js"></script>
+</body>
+</html>
