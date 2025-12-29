@@ -58,7 +58,7 @@ dependencies {
     implementation 'org.apache.httpcomponents.client5:httpclient5:5.2'
 
     // JSON handling
-    implementation 'org.json:json:20210307'
+    implementation 'org.json:json:20251224'
 
     // Lombok for code generation
     compileOnly 'org.projectlombok:lombok'
