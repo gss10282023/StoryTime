@@ -78,6 +78,12 @@
                 <input class="main-input" type="text" th:field="*{userInput}" />
             </p>
             <!-- 生成视频选项 -->
+            <p>
+                <label class="main-label">
+                    <input type="checkbox" th:field="*{generateVideo}" />
+                    Generate video (optional)
+                </label>
+            </p>
 
             <!-- 提交按钮 -->
             <p>
@@ -121,10 +127,10 @@
 <section>
     <div class="footer">
         <ul class="footer-links">
-            <li><a href="log_out/sitemap.html">Site Map</a></li>
-            <li><a href="log_out/privacy.html">Privacy Policy</a></li>
-            <li><a href="log_out/terms.html">Terms of Use</a></li>
-            <li><a href="log_out/privacy.html#contact-us">Contact Us</a></li>
+            <li><a href="/sitemap.html">Site Map</a></li>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Use</a></li>
+            <li><a href="/privacy.html#contact-us">Contact Us</a></li>
         </ul>
     </div>
 </section>

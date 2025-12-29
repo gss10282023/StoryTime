@@ -1,4 +1,7 @@
 .DS_Store
+.env
+*.log
+*.mov
 HELP.md
 .gradle
 build/
